@@ -1,9 +1,12 @@
-#第二个
+# 目标：clashnode
 
 import requests
 import time
 import os
 from bs4 import BeautifulSoup
+
+# v2 cl ；此处更改clash还是v2ray
+software = "cl" #Clash
 
 main_url = "https://clashnode.com/wp-content/uploads/"
 
@@ -24,7 +27,15 @@ day = day - 1
 
 # print(times,day,month,year)
 
-url = main_url + year + "/" + month + "/" + str(time.strftime("%Y%m%d")) +".txt"
+if software == "cl":
+    soft = ".txt"
+elif software == "v2":
+    soft = ".yaml"
+else:
+    print("Error")
+    exit()
+
+url = main_url + year + "/" + month + "/" + str(time.strftime("%Y%m%d")) + soft
 
 print(f"当前最新url是本月{day}号：{url}")
 with open('./url.txt', 'wt') as f:
